@@ -1,25 +1,22 @@
-import { Injectable } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LoginComponent } from '../components/login/login.component';
+import { RegisterComponent } from '../components/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
+@NgModule({
+  declarations: [
+    LoginComponent, 
+    RegisterComponent ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  exports : [
+    LoginComponent, 
+    RegisterComponent 
+  ]
 })
-export class AuthService {
-
-  constructor() { }
-  
-  getUserDetails() {
-    return localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null;
-  }
-
-  setDataInLocalStorage(variableName, data) {
-      localStorage.setItem(variableName, data);
-  }
-
-  getToken() {
-      return localStorage.getItem('token');
-  }
-
-  clearStorage() {
-      localStorage.clear();
-  }
-}
+export class AuthModule { }
