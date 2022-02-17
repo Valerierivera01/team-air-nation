@@ -11,7 +11,7 @@ export class AuthService {
         return localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
     }
     
-    setDataInLocalStorage(variableName, data) {
+    setDataInLocalStorage(variableName: string, data: string) {
         localStorage.setItem(variableName, data);
     }
 

@@ -15,19 +15,19 @@ export class ApiService {
 
 
 
-  getTypeRequest(url) {
+  getTypeRequest(url: any) {
     return this._http.get(`${this.baseUrl}${url}`).pipe(map(res => {
       return res;
     }));
   }
 
-  postTypeRequest(url, payload) {
+  postTypeRequest(url: any, payload: any) {
     return this._http.post(`${this.baseUrl}${url}`, payload).pipe(map(res => {
       return res;
     }));
   }
 
-  putTypeRequest(url, payload) {
+  putTypeRequest(url: any, payload: any) {
     return this._http.put(`${this.baseUrl}${url}`, payload).pipe(map(res => {
       return res;
     }));
