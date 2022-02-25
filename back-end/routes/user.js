@@ -2,24 +2,19 @@ var express = require('express');
 var router = express.Router();
 var md5 = require('md5');
 var jwt = require('jsonwebtoken');
-
 var mysql = require('mysql');
-
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
   database: "simpleangular"
 });
-
-
 /* GET users listing. */
 router.post('/register', async function (req, res, next) {
   try {
     let { username, email, password } = req.body; 
    
     const hashed_password = md5(password.toString())
-
     const checkUsername = `Select username FROM users WHERE username = ?`;
     con.query(checkUsername, [username], (err, result, fields) => {
       if(!result.length){
@@ -37,15 +32,12 @@ router.post('/register', async function (req, res, next) {
         })
       }
     });
-
     
-
    
   } catch (error) {
     res.send({ status: 0, error: error });
   }
 });
-
 router.post('/login', async function (req, res, next) {
   try {
     let { username, password } = req.body; 
@@ -67,7 +59,4 @@ router.post('/login', async function (req, res, next) {
     res.send({ status: 0, error: error });
   }
 });
-
-
-
 module.exports = router;
